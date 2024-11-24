@@ -1,2 +1,1 @@
-# ALPHABATE_DECODER
-ONLY FOR ROVER
+# SITE LINK :-   https://cybercop-404.github.io/ALPHABATE_DECODER/
