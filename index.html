@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAD</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f4f4f9;
+    }
+
+    .container {
+      text-align: center;
+      background: #fff;
+      padding: 20px 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .output {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      position: relative;
+    }
+
+    .output span {
+      display: inline-block;
+      margin-right: 10px;
+      color: green;
+    }
+
+    .copy-btn {
+      padding: 5px 10px;
+      font-size: 14px;
+      color: #fff;
+      background-color: #28a745;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .copy-btn:hover {
+      background-color: #218838;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: auto;
+      padding: 10px 0;
+      background-color: #222;
+      color: #fff;
+      width: 100%;
+    }
+
+    footer span {
+      color: #e25555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Rover Alphabet Decoder</h1>
+    <textarea id="inputText" placeholder="Type your text here..."></textarea>
+    <br>
+    <button o
+    <button onclick="decode()">Decode</button>
+    <div class="output">
+      <span id="outputText"></span>
+      <button class="copy-btn" onclick="copyOutput()">Copy</button>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2024 <span>MD. NAHIDUL ISLAM</span> ❤️‍🩹
+  </footer>
+
+  <script>
+    function reverseAlphabet(char) {
+      if (char >= 'A' && char <= 'Z') {
+        return String.fromCharCode('Z'.charCodeAt(0) - (char.charCodeAt(0) - 'A'.charCodeAt(0)));
+      } else if (char >= 'a' && char <= 'z') {
+        return String.fromCharCode('z'.charCodeAt(0) - (char.charCodeAt(0) - 'a'.charCodeAt(0)));
+      } else {
+        return char;
+      }
+    }
+    
+    function decode() {
+      const input = document.getElementById("inputText").value;
+      const decoded = input.split("").map(reverseAlphabet).join("");
+      document.getElementById("outputText").innerText = `Decoded: ${decoded}`;
+    }
+
+    function copyOutput() {
+      const outputText = document.getElementById("outputText").innerText;
+      navigator.clipboard.writeText(outputText.replace(/^(Encoded: |Decoded: )/, ""))
+        .then(() => alert("Output copied to clipboard!"))
+        .catch(err => alert("Failed to copy: " + err));
+    }
+  </script>
+</body>
+</html>
